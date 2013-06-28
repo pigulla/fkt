@@ -1,0 +1,21 @@
+{
+  "name": "fkt",
+  "version": "0.0.1",
+  "description": "Trivial but occasionally useful functions intended for use as callbacks.",
+  "main": "fkt.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pigulla/fkt.git"
+  },
+  "keywords": [
+    "functions",
+    "util"
+  ],
+  "author": "Raphael Pigulla <pigulla@four66.com>",
+  "license": "WTFPL",
+  "readmeFilename": "README.md",
+  "gitHead": "a120be0c7e294977afb8ba54d1597fa61fba96c5"
+}
