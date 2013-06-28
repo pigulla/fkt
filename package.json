@@ -1,6 +1,6 @@
 {
   "name": "fkt",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Trivial but occasionally useful functions intended for use as callbacks.",
   "main": "fkt.js",
   "scripts": {

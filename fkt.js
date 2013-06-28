@@ -12,14 +12,10 @@
     'use strict';
 
     /**
-     * @overview The fkt module.
+     *
+     * @exports fkt
      * @version 0.1.0
      * @author Raphael Pigulla <pigulla@four66.com>
-     */
-
-    /**
-     * @exports fkt
-     * @type {Object.<string, function>}
      */
     var fkt = {};
 
@@ -40,6 +36,7 @@
      * // or if it makes you feel fuzzy even
      * (callback || noop)(someValue);
      *
+     * @version 0.1.0
      * @returns {undefined}
      */
     fkt.noop = function () {
@@ -48,6 +45,7 @@
     /**
      * The identity function that always returns its first argument.
      *
+     * @version 0.1.0
      * @param {*} x Some value.
      * @returns {*} Always returns `x`.
      */
@@ -58,6 +56,7 @@
     /**
      * A function that always returns true.
      *
+     * @version 0.1.0
      * @returns {boolean} Always returns `true`.
      */
     fkt.true = function () {
@@ -73,6 +72,7 @@
      *     'click ul.items li': fkt.false
      * }
      *
+     * @version 0.1.0
      * @returns {boolean} Always returns `false`.
      */
     fkt.false = function () {
@@ -94,6 +94,7 @@
      * // we can do
      * var myArray = someArray.filter(fkt.negate(userFunction));
      *
+     * @version 0.1.0
      * @param {function} fn The function to negate.
      * @param {object=} scope The scope in which to execute `fn`.
      * @returns {function} Returns the wrapped function.
@@ -107,6 +108,7 @@
     /**
      * Creates a function that always returns the specified value.
      *
+     * @version 0.1.0
      * @param {*} c The value you want to be returned.
      * @returns {function} Returns a function that always returns `c`.
      */
@@ -122,6 +124,7 @@
      * This is an alias for {@link module:fkt.noop|noop()}. You can use whichever makes more sense semantically (i.e.,
      * makes your code more readable).
      *
+     * @version 0.1.0
      * @type {function}
      * @returns {undefined} Always returns `undefined`.
      */
