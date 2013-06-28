@@ -1,7 +1,5 @@
 'use strict';
 
-var nodeunit = require('nodeunit');
-
 var fkt = require('../src/fkt');
 
 module.exports = {
