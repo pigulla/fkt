@@ -51,7 +51,7 @@
      * @alias fkt.returnTrue
      * @returns {boolean}
      */
-    fkt.yes = function () {
+    fkt.true = function () {
         return true;
     };
 
@@ -61,7 +61,7 @@
      * @alias fkt.returnFalse
      * @returns {boolean}
      */
-    fkt.no = function () {
+    fkt.false = function () {
         return false;
     };
 
@@ -73,7 +73,7 @@
      *       return !userFunction(el);
      *   });
      * becomes
-     *   var myArray = someArray.filter(fkt.not(userFunction));
+     *   var myArray = someArray.filter(fkt.falset(userFunction));
      *
      * @param {function} fn
      * @param {object} scope
@@ -98,8 +98,8 @@
     };
 
     // aliases
-    fkt.returnFalse = fkt.no;
-    fkt.returnTrue = fkt.yes;
+    fkt.yes = fkt.true;
+    fkt.no = fkt.false;
     fkt.id = fkt.identity;
     fkt.static = fkt.constant;
     fkt.nop = fkt.empty = fkt.undefined = fkt.noop;
