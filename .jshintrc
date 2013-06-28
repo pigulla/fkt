@@ -31,7 +31,7 @@
     "evil": false,
     "expr": false,
     "funcscope": false,
-    "globalstrict": false,
+    "globalstrict": true,
     "iterator": false,
     "lastsemic": false,
     "laxbreak": false,
@@ -52,7 +52,7 @@
     "dojo": false,
     "jquery": false,
     "mootools": false,
-    "node": false,
+    "node": true,
     "nonstandard": false,
     "prototypejs": false,
     "rhino": false,
@@ -61,8 +61,7 @@
     "yui": false,
 
     "globals": {
-        "define": false,
-        "module": false,
-        "exports": true
+        "exports": true,
+        "define": false
     }
 }

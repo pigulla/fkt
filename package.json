@@ -1,8 +1,8 @@
 {
   "name": "fkt",
   "version": "0.1.0",
-  "description": "Trivial but occasionally useful functions intended for use as callbacks.",
-  "main": "fkt.js",
+  "description": "Trivial but occasionally useful functions, primarily intended for use as callbacks.",
+  "main": "src/fkt.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,6 +21,9 @@
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-jshint": "~0.6.0",
-    "grunt-jsdoc": "~0.3.3"
+    "grunt-jsdoc": "~0.3.3",
+    "nodeunit": "~0.8.1",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt-contrib-clean": "~0.4.1"
   }
 }
