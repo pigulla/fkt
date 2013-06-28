@@ -1,0 +1,10 @@
+{
+    "plugins": ["plugins/markdown"],
+    "opts": {
+        "encoding": "utf-8",
+        "private": false
+    },
+    "templates": {
+        "monospaceLinks": true
+    }
+}

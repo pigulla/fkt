@@ -17,5 +17,10 @@
   "author": "Raphael Pigulla <pigulla@four66.com>",
   "license": "WTFPL",
   "readmeFilename": "README.md",
-  "gitHead": "a120be0c7e294977afb8ba54d1597fa61fba96c5"
+  "gitHead": "a120be0c7e294977afb8ba54d1597fa61fba96c5",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-jsdoc": "~0.3.3"
+  }
 }
