@@ -120,12 +120,16 @@
     };
 
     /**
-     * Wraps a function so that it never throws an exception.
+     * Wraps a function so that it never throws an exception. Don't use this in production code.
+     *
+     * The return value of the wrapped function is the return value of the original function. If an exception was
+     * thrown, a reference to {@link module:fkt.undefined|undefined} is returned (note that this is _not_ the same as
+     * the value `undefined`).
      *
      * @since 0.1.0
-     * @param {function} fn
-     * @param {object=} scope
-     * @returns {function}
+     * @param {function} fn The function to wrap.
+     * @param {object=} scope The scope in which to execute `fn`.
+     * @returns {function} Returns the wrapped function.
      */
     fkt.catch = function (fn, scope) {
         return function () {

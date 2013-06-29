@@ -1,29 +1,33 @@
 {
-  "name": "fkt",
-  "version": "0.1.0",
-  "description": "Trivial but occasionally useful functions, primarily intended for use as callbacks.",
-  "main": "src/fkt.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/pigulla/fkt.git"
-  },
-  "keywords": [
-    "functions",
-    "util"
-  ],
-  "author": "Raphael Pigulla <pigulla@four66.com>",
-  "license": "WTFPL",
-  "readmeFilename": "README.md",
-  "gitHead": "a120be0c7e294977afb8ba54d1597fa61fba96c5",
-  "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-jshint": "~0.6.0",
-    "grunt-jsdoc": "~0.3.3",
-    "nodeunit": "~0.8.1",
-    "grunt-contrib-nodeunit": "~0.2.0",
-    "grunt-contrib-clean": "~0.4.1"
-  }
+    "name": "fkt",
+    "version": "0.1.0",
+    "description": "A collection of simple but occasionally useful functions, primarily intended for use as callbacks and in tests.",
+    "main": "src/fkt.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/pigulla/fkt.git"
+    },
+    "jam": {
+        "main": "src/fkt.js"
+    },
+    "keywords": [
+        "functions",
+        "util",
+        "utilities"
+    ],
+    "author": "Raphael Pigulla <pigulla@four66.com>",
+    "license": "WTFPL",
+    "readmeFilename": "README.md",
+    "gitHead": "a120be0c7e294977afb8ba54d1597fa61fba96c5",
+    "devDependencies": {
+        "grunt": "~0.4.1",
+        "grunt-contrib-jshint": "~0.6.0",
+        "grunt-jsdoc": "~0.3.3",
+        "nodeunit": "~0.8.1",
+        "grunt-contrib-nodeunit": "~0.2.0",
+        "grunt-contrib-clean": "~0.4.1"
+    }
 }

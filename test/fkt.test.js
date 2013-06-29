@@ -21,11 +21,13 @@ module.exports = {
         test.doesNotThrow(uncaught);
         test.strictEqual(uncaught(), 42);
 
-        var scope = { x: 13 };
-        fkt.catch(function () {
-            test.strictEqual(this, scope);
-        }, scope)();
+        var scope = { x: 13 },
+            result =  fkt.catch(function (y) {
+                test.strictEqual(this, scope);
+                return this.x + y;
+            }, scope)(7);
 
+        test.strictEqual(result, 20);
         test.done();
     }
 };
