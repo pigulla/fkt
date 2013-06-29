@@ -18,6 +18,10 @@
         "util",
         "utilities"
     ],
+    "categories": [
+        "Testing",
+        "Utilities"
+    ],
     "author": "Raphael Pigulla <pigulla@four66.com>",
     "license": "WTFPL",
     "readmeFilename": "README.md",

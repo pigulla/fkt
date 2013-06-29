@@ -1,7 +1,7 @@
 #fkt
 
 
-Trivial but occasionally useful functions intended for use as callbacks and in unit tests.
+Trivial but occasionally useful functions intended for use as callbacks and in unit tests. Compatible with [Node.js](http://nodejs.org), [requirejs](http://requirejs.org/) and browser environments.
 
 
 ### Installation
