@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
     grunt.initConfig({
-        clean: ['doc'],
+        clean: ['docs'],
 
         jshint: {
             files: ['src/fkt.js'],
@@ -13,7 +13,7 @@ module.exports = function(grunt) {
             dist: {
                 src: ['src/fkt.js'],
                 options: {
-                    destination: 'doc',
+                    destination: 'docs',
                     configure: 'jsdoc.json'
                 }
             }
