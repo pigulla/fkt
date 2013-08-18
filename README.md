@@ -6,7 +6,7 @@ Trivial but occasionally useful functions intended for use as callbacks and in u
 
 ### Installation
 
-Simply do `npm install fkt` (for [Node.js](http://nodejs.org)), `jam install fkt` (for [Jam](http://jamjs.org/)), `bower intall fkt` (for [Bower](http://bower.io/)) or just download `fkt.js`.
+Simply do `npm install fkt` (for [Node.js](http://nodejs.org)), `jam install fkt` (for [Jam](http://jamjs.org/)), `bower install fkt` (for [Bower](http://bower.io/)) or just download `fkt.js`.
 
 
 ### API

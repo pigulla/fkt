@@ -1,7 +1,7 @@
 {
     "name": "fkt",
-    "version": "0.1.0",
-    "description": "A collection of simple but occasionally useful functions, primarily intended for use as callbacks and in tests.",
+    "version": "0.1.1",
+    "description": "A collection of very simple but occasionally useful functions, primarily intended for use as callbacks and in tests.",
     "main": "src/fkt.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"

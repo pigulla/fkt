@@ -15,7 +15,7 @@
      * fkt
      *
      * @exports fkt
-     * @version 0.1.0
+     * @version 0.1.1
      * @author Raphael Pigulla <pigulla@four66.com>
      */
     var fkt = {};
@@ -81,7 +81,7 @@
     };
 
     /**
-     * A function that wraps the given function ans  always returns the negated value of it.
+     * A function that wraps the given function and always returns the negated value of it.
      *
      * One purpose for this is using `Array.filter` with a function that happens to return `false` for values you want
      * to keep (see the example).
