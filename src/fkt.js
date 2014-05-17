@@ -73,7 +73,7 @@
      *                 cb(err);
      *             });
      *         }
-     *     ], function (err) {
+     *     ], function (cb) {
      *         // ...
      *     });
      *     
