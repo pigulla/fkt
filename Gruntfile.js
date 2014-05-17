@@ -1,5 +1,8 @@
-module.exports = function(grunt) {
+var fs = require('fs');
+
+module.exports = function (grunt) {
     grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
         clean: ['docs'],
 
         jshint: {
@@ -9,12 +12,27 @@ module.exports = function(grunt) {
             }
         },
 
-        jsdoc: {
-            dist: {
-                src: ['src/fkt.js'],
+        yuidoc: {
+            compile: {
+                name: '<%= pkg.name %>',
+                description: '<%= pkg.description %>',
+                version: '<%= pkg.version %>',
+                url: '<%= pkg.homepage %>',
                 options: {
-                    destination: 'docs',
-                    configure: 'jsdoc.json'
+                    paths: 'src/',
+                    outdir: 'docs/'
+                }
+            }
+        },
+        
+        shell: {
+            doc2md: {
+                command: 'node_modules/yuidoc2md/bin/cli.js src/fkt.js',
+                options: {
+                    stdout: false,
+                    callback: function (err, stdout, stderr, cb) {
+                        fs.writeFile('api.md', stdout, cb)
+                    }
                 }
             }
         },
@@ -26,8 +44,9 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-jsdoc');
     grunt.loadNpmTasks('grunt-contrib-nodeunit');
+    grunt.loadNpmTasks('grunt-contrib-yuidoc');
+    grunt.loadNpmTasks('grunt-shell');
 
-    grunt.registerTask('default', ['clean', 'jshint', 'jsdoc', 'nodeunit']);
+    grunt.registerTask('default', ['clean', 'jshint', 'nodeunit', 'yuidoc', 'shell:doc2md']);
 };

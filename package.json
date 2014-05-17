@@ -1,36 +1,42 @@
 {
-    "name": "fkt",
-    "version": "0.1.1",
-    "description": "A collection of very simple but occasionally useful functions, primarily intended for use as callbacks and in tests.",
-    "main": "src/fkt.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/pigulla/fkt.git"
-    },
-    "jam": {
-        "main": "src/fkt.js"
-    },
-    "keywords": [
-        "functions",
-        "util",
-        "utilities"
-    ],
-    "categories": [
-        "Testing",
-        "Utilities"
-    ],
-    "author": "Raphael Pigulla <pigulla@four66.com>",
-    "license": "WTFPL",
-    "readmeFilename": "README.md",
-    "devDependencies": {
-        "grunt": "~0.4.1",
-        "grunt-contrib-jshint": "~0.6.0",
-        "grunt-jsdoc": "~0.3.3",
-        "nodeunit": "~0.8.1",
-        "grunt-contrib-nodeunit": "~0.2.0",
-        "grunt-contrib-clean": "~0.4.1"
-    }
+  "name": "fkt",
+  "version": "0.1.2",
+  "description": "A collection of very simple but occasionally useful functions, primarily intended for use as callbacks and in tests.",
+  "main": "src/fkt.js",
+  "scripts": {
+    "test": "node_modules/nodeunit/bin/nodeunit test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pigulla/fkt.git"
+  },
+  "jam": {
+    "main": "src/fkt.js"
+  },
+  "keywords": [
+    "functions",
+    "util",
+    "utilities"
+  ],
+  "categories": [
+    "Testing",
+    "Utilities"
+  ],
+  "author": "Raphael Pigulla <pigulla@four66.com>",
+  "license": "WTFPL",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-clean": "~0.4.1",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-nodeunit": "^0.4.0",
+    "grunt-contrib-yuidoc": "^0.5.2",
+    "nodeunit": "~0.8.1",
+    "yuidoc2md": "^0.4.5",
+    "yuidocjs": "^0.3.50",
+    "grunt-shell": "^0.7.0"
+  },
+  "dependencies": {
+    "yuidoc2md": "^0.4.5"
+  }
 }

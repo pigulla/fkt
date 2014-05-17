@@ -29,5 +29,21 @@ module.exports = {
 
         test.strictEqual(result, 20);
         test.done();
+    },
+    
+    'bare': function (test) {
+        var args = [1, 'a', true],
+            result,
+            fn = function () {
+                result = Array.prototype.slice.call(arguments);
+            },
+            baredFn = fkt.bare(fn);
+        
+        fn.apply(null, args);
+        test.deepEqual(result, args)
+        baredFn.apply(null, args);
+        test.deepEqual(result, args.splice(0, 1));
+        
+        test.done();
     }
 };

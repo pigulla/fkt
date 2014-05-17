@@ -11,4 +11,5 @@ Simply do `npm install fkt` (for [Node.js](http://nodejs.org)), `jam install fkt
 
 ### API
 
-See the generated documentation. It's not particularly pleasant to the eye, so if anyone knows a better template for [jsdoc](http://usejsdoc.org) please let me know).
+Take a look at the [documentation](api.md). It was auto-generated using [YUIDoc](http://yui.github.io/yuidoc/) and [yuidoc2md](https://github.com/75lb/yuidoc2md) so some formatting got lost on the way. I'd recommend
+checking out the source code instead.
