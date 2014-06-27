@@ -1,3 +1,11 @@
+/**
+ * fkt
+ *
+ * @module fkt
+ * @version 0.1.2
+ * @author Raphael Pigulla <pigulla@four66.com>
+ */
+
 (function (root, factory) {
     'use strict';
 
@@ -12,14 +20,8 @@
     'use strict';
 
     /**
-     * fkt
-     *
-     * @module fkt
-     * @class fkt
-     * @static
-     * @version 0.1.2
-     * @author Raphael Pigulla <pigulla@four66.com>
-     */
+    @alias module:fkt
+    */
     var fkt = {};
 
     /**
@@ -39,7 +41,6 @@
      *     // or if it makes you feel fuzzy even
      *     (callback || noop)(someValue);
      *
-     * @method noop
      * @since 0.1.0
      * @return {undefined}
      */
@@ -49,9 +50,8 @@
     /**
      * The identity function that always returns its first argument.
      * 
-     * @method identity
      * @since 0.1.0
-     * @param {*} x Some value.
+     * @param {*} - Some value.
      * @return {*} Returns the input value `x`.
      */
     fkt.identity = function (x) {
@@ -86,10 +86,9 @@
      *         // ...
      *     });
      *
-     * @method bare
      * @since 0.1.2
-     * @param {Function} fn The function to wrap.
-     * @param {Object=fkt} scope The scope in which to execute `fn`.
+     * @param {Function} - The function to wrap.
+     * @param [scope=fkt] {Object} - The scope in which to execute `fn`.
      * @return {Function} Returns the wrapped function.
      */
     fkt.bare = function (fn, scope) {
@@ -101,7 +100,6 @@
     /**
      * A function that always returns true.
      *
-     * @method true
      * @since 0.1.0
      * @return {Boolean} Always returns `true`.
      */
@@ -118,7 +116,6 @@
      *         'click ul.items li': fkt.false
      *     }
      *
-     * @method false
      * @since 0.1.0
      * @return {Boolean} Always returns `false`.
      */
@@ -141,10 +138,9 @@
      *     // we can do
      *     var myArray = someArray.filter(fkt.negate(userFunction));
      *
-     * @method negate
      * @since 0.1.0
      * @param {Function} fn The function to negate.
-     * @param {Object=fkt} scope The scope in which to execute `fn`.
+     * @param [scope=fkt] {Object} - The scope in which to execute `fn`.
      * @return {Function} Returns the wrapped function.
      */
     fkt.negate = function (fn, scope) {
@@ -156,7 +152,6 @@
     /**
      * Creates a function that always returns the specified value.
      *
-     * @method constant
      * @since 0.1.0
      * @param {*} c The value you want to be returned.
      * @return {Function} Returns a function that always returns `c`.
@@ -181,10 +176,9 @@
      *         // it's all good
      *     }
      * 
-     * @method catch
      * @since 0.1.0
-     * @param {Function} fn The function to wrap.
-     * @param {Object=fkt} scope The scope in which to execute `fn`.
+     * @param {Function} - The function to wrap.
+     * @param [scope=fkt] {Object} - The scope in which to execute `fn`.
      * @return {Function} Returns the wrapped function.
      */
     fkt.catch = function (fn, scope) {
@@ -203,7 +197,6 @@
      * This is an alias for `fkt.noop()`. You can use whichever makes more sense semantically (i.e.,  makes your code
      * more readable).
      *
-     * @method undefined
      * @since 0.1.0
      * @type {Function}
      * @return {undefined} Always returns `undefined`.
