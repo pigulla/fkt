@@ -15,7 +15,8 @@ module.exports = function (grunt) {
             docs: {
                 options: {
                     template: "jsdoc2md/README.hbs",
-                    index: true
+                    index: true,
+                    "skip-heading": true
                 },
                 src: "src/fkt.js",
                 dest: "README.md"

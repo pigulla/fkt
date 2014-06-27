@@ -1,9 +1,11 @@
 /**
- * fkt
- *
  * @module fkt
  * @version 0.1.2
  * @author Raphael Pigulla <pigulla@four66.com>
+ * @example
+ * ```js
+ * var fkt = require("fkt");
+ * ```
  */
 
 (function (root, factory) {
@@ -31,6 +33,7 @@
      * anonymous function every time.
      *
      * @example
+     * ```js    
      *     // explicitly specify a "do nothing" function (which creates a new function every time)
      *     var callback = config.cb || function () {};
      *     // alternatively, only invoke the callback if defined (fairly verbose)
@@ -40,7 +43,7 @@
      *     var callback = config.cb || fkt.noop;
      *     // or if it makes you feel fuzzy even
      *     (callback || noop)(someValue);
-     *
+     * ```
      * @since 0.1.0
      * @return {undefined}
      */
@@ -64,6 +67,7 @@
      * Can be used to discard unneeded arguments for callbacks, especially when using libraries like async.
      *
      * @example
+     * ```js
      *     // Simplify this:
      *     async.waterfall([
      *         function (cb) {
@@ -85,7 +89,7 @@
      *     ], function (err) {
      *         // ...
      *     });
-     *
+     * ```
      * @since 0.1.2
      * @param {Function} - The function to wrap.
      * @param [scope=fkt] {Object} - The scope in which to execute `fn`.
@@ -111,6 +115,7 @@
      * A function that always returns false.
      *
      * @example
+     * ```js   
      *     // useful in Backbone.Views when you need to stop event propagation:
      *     events: {
      *         'click ul.items li': fkt.false
@@ -130,6 +135,7 @@
      * to keep (see the example).
      *
      * @example
+     * ```js
      *     // instead of this
      *     var myArray = someArray.filter(function (el) {
      *         return !userFunction(el);
@@ -137,7 +143,7 @@
      *    
      *     // we can do
      *     var myArray = someArray.filter(fkt.negate(userFunction));
-     *
+     * ```
      * @since 0.1.0
      * @param {Function} fn The function to negate.
      * @param [scope=fkt] {Object} - The scope in which to execute `fn`.
@@ -168,6 +174,7 @@
      * The return value of the wrapped function is the return value of the original function. If an exception was
      * thrown, a reference to `fkt.undefined` is returned (note that this is _not_ the same as  the value `undefined`).
      *
+     * ```js
      * @example
      *     var result = fkt.catch(someFunction);
      *     if (result === fkt.undefined) {
@@ -175,7 +182,7 @@
      *     } else {
      *         // it's all good
      *     }
-     * 
+     * ```
      * @since 0.1.0
      * @param {Function} - The function to wrap.
      * @param [scope=fkt] {Object} - The scope in which to execute `fn`.
