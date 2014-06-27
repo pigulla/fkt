@@ -1,3 +1,13 @@
+/**
+ * @module fkt
+ * @version 0.1.2
+ * @author Raphael Pigulla <pigulla@four66.com>
+ * @example
+ * ```js
+ * var fkt = require("fkt");
+ * ```
+ */
+
 (function (root, factory) {
     'use strict';
 
@@ -12,14 +22,8 @@
     'use strict';
 
     /**
-     * fkt
-     *
-     * @module fkt
-     * @class fkt
-     * @static
-     * @version 0.1.2
-     * @author Raphael Pigulla <pigulla@four66.com>
-     */
+    @alias module:fkt
+    */
     var fkt = {};
 
     /**
@@ -29,17 +33,17 @@
      * anonymous function every time.
      *
      * @example
-     *     // explicitly specify a "do nothing" function (which creates a new function every time)
-     *     var callback = config.cb || function () {};
-     *     // alternatively, only invoke the callback if defined (fairly verbose)
-     *     if (callback) { callback(someValue); }
+     * ```js    
+     * // explicitly specify a "do nothing" function (which creates a new function every time)
+     * var callback = config.cb || function () {};
+     * // alternatively, only invoke the callback if defined (fairly verbose)
+     * if (callback) { callback(someValue); }
      *
-     *     // instead, do this
-     *     var callback = config.cb || fkt.noop;
-     *     // or if it makes you feel fuzzy even
-     *     (callback || noop)(someValue);
-     *
-     * @method noop
+     * // instead, do this
+     * var callback = config.cb || fkt.noop;
+     * // or if it makes you feel fuzzy even
+     * (callback || noop)(someValue);
+     * ```
      * @since 0.1.0
      * @return {undefined}
      */
@@ -49,9 +53,8 @@
     /**
      * The identity function that always returns its first argument.
      * 
-     * @method identity
      * @since 0.1.0
-     * @param {*} x Some value.
+     * @param {*} - Some value.
      * @return {*} Returns the input value `x`.
      */
     fkt.identity = function (x) {
@@ -64,32 +67,32 @@
      * Can be used to discard unneeded arguments for callbacks, especially when using libraries like async.
      *
      * @example
-     *     // Simplify this:
-     *     async.waterfall([
-     *         function (cb) {
-     *             loadFooBarAndBaz(function (err, foo, bar, baz) {
-     *                 // if we pass cb in directly, the next function in the chain would 
-     *                 // be called with three unused arguments which we want to avoid
-     *                 cb(err);
-     *             });
-     *         }
-     *     ], function (cb) {
-     *         // ...
-     *     });
-     *     
-     *     // to this:
-     *     async.waterfall[
-     *         function (cb) {
-     *             loadFooBarAndBaz(fkt.bare(cb));
-     *         }
-     *     ], function (err) {
-     *         // ...
-     *     });
-     *
-     * @method bare
+     * ```js
+     * // Simplify this:
+     * async.waterfall([
+     *     function (cb) {
+     *         loadFooBarAndBaz(function (err, foo, bar, baz) {
+     *             // if we pass cb in directly, the next function in the chain would 
+     *             // be called with three unused arguments which we want to avoid
+     *             cb(err);
+     *         });
+     *     }
+     * ], function (cb) {
+     *     // ...
+     * });
+     * 
+     * // to this:
+     * async.waterfall[
+     *     function (cb) {
+     *         loadFooBarAndBaz(fkt.bare(cb));
+     *     }
+     * ], function (err) {
+     *     // ...
+     * });
+     * ```
      * @since 0.1.2
-     * @param {Function} fn The function to wrap.
-     * @param {Object=fkt} scope The scope in which to execute `fn`.
+     * @param {Function} - The function to wrap.
+     * @param [scope=fkt] {Object} - The scope in which to execute `fn`.
      * @return {Function} Returns the wrapped function.
      */
     fkt.bare = function (fn, scope) {
@@ -101,7 +104,6 @@
     /**
      * A function that always returns true.
      *
-     * @method true
      * @since 0.1.0
      * @return {Boolean} Always returns `true`.
      */
@@ -113,12 +115,12 @@
      * A function that always returns false.
      *
      * @example
-     *     // useful in Backbone.Views when you need to stop event propagation:
-     *     events: {
-     *         'click ul.items li': fkt.false
-     *     }
-     *
-     * @method false
+     * ```js   
+     * // useful in Backbone.Views when you need to stop event propagation:
+     * events: {
+     *     'click ul.items li': fkt.false
+     * }
+     * ```
      * @since 0.1.0
      * @return {Boolean} Always returns `false`.
      */
@@ -133,18 +135,17 @@
      * to keep (see the example).
      *
      * @example
-     *     // instead of this
-     *     var myArray = someArray.filter(function (el) {
-     *         return !userFunction(el);
-     *     });
-     *    
-     *     // we can do
-     *     var myArray = someArray.filter(fkt.negate(userFunction));
-     *
-     * @method negate
+     * ```js
+     * // instead of this
+     * var myArray = someArray.filter(function (el) {
+     *     return !userFunction(el);
+     * });
+     *      * // we can do
+     * var myArray = someArray.filter(fkt.negate(userFunction));
+     * ```
      * @since 0.1.0
      * @param {Function} fn The function to negate.
-     * @param {Object=fkt} scope The scope in which to execute `fn`.
+     * @param [scope=fkt] {Object} - The scope in which to execute `fn`.
      * @return {Function} Returns the wrapped function.
      */
     fkt.negate = function (fn, scope) {
@@ -156,7 +157,6 @@
     /**
      * Creates a function that always returns the specified value.
      *
-     * @method constant
      * @since 0.1.0
      * @param {*} c The value you want to be returned.
      * @return {Function} Returns a function that always returns `c`.
@@ -174,17 +174,17 @@
      * thrown, a reference to `fkt.undefined` is returned (note that this is _not_ the same as  the value `undefined`).
      *
      * @example
-     *     var result = fkt.catch(someFunction);
-     *     if (result === fkt.undefined) {
-     *         // some exception was thrown
-     *     } else {
-     *         // it's all good
-     *     }
-     * 
-     * @method catch
+     * ```js
+     * var result = fkt.catch(someFunction);
+     * if (result === fkt.undefined) {
+     *     // some exception was thrown
+     * } else {
+     *     // it's all good
+     * }
+     * ```
      * @since 0.1.0
-     * @param {Function} fn The function to wrap.
-     * @param {Object=fkt} scope The scope in which to execute `fn`.
+     * @param {Function} - The function to wrap.
+     * @param [scope=fkt] {Object} - The scope in which to execute `fn`.
      * @return {Function} Returns the wrapped function.
      */
     fkt.catch = function (fn, scope) {
@@ -203,7 +203,6 @@
      * This is an alias for `fkt.noop()`. You can use whichever makes more sense semantically (i.e.,  makes your code
      * more readable).
      *
-     * @method undefined
      * @since 0.1.0
      * @type {Function}
      * @return {undefined} Always returns `undefined`.
