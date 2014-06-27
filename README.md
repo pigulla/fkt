@@ -9,9 +9,8 @@ Trivial but occasionally useful functions intended for use as callbacks and in u
 Simply do `npm install fkt` (for [Node.js](http://nodejs.org)), `jam install fkt` (for [Jam](http://jamjs.org/)), `bower install fkt` (for [Bower](http://bower.io/)) or just download `fkt.js`.
 
 
-### API
+# API
 <a name="module_fkt"></a>
-##fkt
 **Version**: 0.1.2  
 **Author**: Raphael Pigulla <pigulla@four66.com>  
 
@@ -20,6 +19,17 @@ Simply do `npm install fkt` (for [Node.js](http://nodejs.org)), `jam install fkt
 ```js
 var fkt = require("fkt");
 ```
+**Contents**  
+* [undefined](#module_fkt.undefined)
+* [noop()](#module_fkt.noop)
+* [identity(x)](#module_fkt.identity)
+* [bare(fn, [scope])](#module_fkt.bare)
+* [true()](#module_fkt.true)
+* [false()](#module_fkt.false)
+* [negate(fn, [scope])](#module_fkt.negate)
+* [constant(c)](#module_fkt.constant)
+* [catch(fn, [scope])](#module_fkt.catch)
+
 <a name="module_fkt.undefined"></a>
 ###fkt.undefined
 A function that always returns undefined.
@@ -40,15 +50,15 @@ anonymous function every time.
 **Returns**: `undefined`  
 **Example**  
 ```js    
-    // explicitly specify a "do nothing" function (which creates a new function every time)
-    var callback = config.cb || function () {};
-    // alternatively, only invoke the callback if defined (fairly verbose)
-    if (callback) { callback(someValue); }
+// explicitly specify a "do nothing" function (which creates a new function every time)
+var callback = config.cb || function () {};
+// alternatively, only invoke the callback if defined (fairly verbose)
+if (callback) { callback(someValue); }
 
-    // instead, do this
-    var callback = config.cb || fkt.noop;
-    // or if it makes you feel fuzzy even
-    (callback || noop)(someValue);
+// instead, do this
+var callback = config.cb || fkt.noop;
+// or if it makes you feel fuzzy even
+(callback || noop)(someValue);
 ```
 <a name="module_fkt.identity"></a>
 ###fkt.identity(x)
@@ -75,27 +85,27 @@ Can be used to discard unneeded arguments for callbacks, especially when using l
 **Returns**: `function` - Returns the wrapped function.  
 **Example**  
 ```js
-    // Simplify this:
-    async.waterfall([
-        function (cb) {
-            loadFooBarAndBaz(function (err, foo, bar, baz) {
-                // if we pass cb in directly, the next function in the chain would 
-                // be called with three unused arguments which we want to avoid
-                cb(err);
-            });
-        }
-    ], function (cb) {
-        // ...
-    });
-    
-    // to this:
-    async.waterfall[
-        function (cb) {
-            loadFooBarAndBaz(fkt.bare(cb));
-        }
-    ], function (err) {
-        // ...
-    });
+// Simplify this:
+async.waterfall([
+    function (cb) {
+        loadFooBarAndBaz(function (err, foo, bar, baz) {
+            // if we pass cb in directly, the next function in the chain would 
+            // be called with three unused arguments which we want to avoid
+            cb(err);
+        });
+    }
+], function (cb) {
+    // ...
+});
+
+// to this:
+async.waterfall[
+    function (cb) {
+        loadFooBarAndBaz(fkt.bare(cb));
+    }
+], function (err) {
+    // ...
+});
 ```
 <a name="module_fkt.true"></a>
 ###fkt.true()
@@ -111,10 +121,11 @@ A function that always returns false.
 **Returns**: `Boolean` - Always returns `false`.  
 **Example**  
 ```js   
-    // useful in Backbone.Views when you need to stop event propagation:
-    events: {
-        'click ul.items li': fkt.false
-    }
+// useful in Backbone.Views when you need to stop event propagation:
+events: {
+    'click ul.items li': fkt.false
+}
+```
 <a name="module_fkt.negate"></a>
 ###fkt.negate(fn, [scope])
 A function that wraps the given function and always returns the negated value of it.
@@ -131,13 +142,12 @@ to keep (see the example).
 **Returns**: `function` - Returns the wrapped function.  
 **Example**  
 ```js
-    // instead of this
-    var myArray = someArray.filter(function (el) {
-        return !userFunction(el);
-    });
-   
-    // we can do
-    var myArray = someArray.filter(fkt.negate(userFunction));
+// instead of this
+var myArray = someArray.filter(function (el) {
+    return !userFunction(el);
+});
+     * // we can do
+var myArray = someArray.filter(fkt.negate(userFunction));
 ```
 <a name="module_fkt.constant"></a>
 ###fkt.constant(c)
@@ -156,8 +166,6 @@ Wraps a function so that it never throws an exception. _Don't use this in produc
 The return value of the wrapped function is the return value of the original function. If an exception was
 thrown, a reference to `fkt.undefined` is returned (note that this is _not_ the same as  the value `undefined`).
 
-```js
-
 **Params**
 
 - fn `function` - The function to wrap.
@@ -166,6 +174,7 @@ thrown, a reference to `fkt.undefined` is returned (note that this is _not_ the 
 **Since**: 0.1.0  
 **Returns**: `function` - Returns the wrapped function.  
 **Example**  
+```js
 var result = fkt.catch(someFunction);
 if (result === fkt.undefined) {
     // some exception was thrown
