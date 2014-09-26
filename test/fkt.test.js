@@ -30,20 +30,64 @@ module.exports = {
         test.strictEqual(result, 20);
         test.done();
     },
-    
+
     'bare': function (test) {
         var args = [1, 'a', true],
+            result = {},
+            invokeArgs,
+            invokeResult,
+            fn = function () {
+                invokeArgs = Array.prototype.slice.call(arguments);
+                return result;
+            },
+            baredFn = fkt.bare(fn);
+
+        invokeResult = fn.apply(null, args);
+        test.deepEqual(invokeArgs, args)
+        test.strictEqual(invokeResult, result);
+
+        invokeResult = baredFn.apply(null, args);
+        test.deepEqual(invokeArgs, [1]);
+        test.strictEqual(invokeResult, result);
+
+        test.done();
+    },
+
+    'narrow': function (test) {
+        var args = [1, 'a', true],
+            result = {},
+            invokeArgs,
+            invokeResult,
+            fn = function () {
+                invokeArgs = Array.prototype.slice.call(arguments);
+                return result;
+            },
+            narrowedFn = fkt.narrow(2, fn);
+
+        invokeResult = fn.apply(null, args);
+        test.deepEqual(invokeArgs, args)
+        test.strictEqual(invokeResult, result);
+
+        invokeResult = narrowedFn.apply(null, args);
+        test.deepEqual(invokeArgs, [1, 'a']);
+        test.strictEqual(invokeResult, result);
+
+        test.done();
+    },
+
+    'safe': function (test) {
+        var args = [new Error('crap'), 'a', true],
             result,
             fn = function () {
                 result = Array.prototype.slice.call(arguments);
             },
-            baredFn = fkt.bare(fn);
-        
+            savedFn = fkt.safe(fn);
+
         fn.apply(null, args);
         test.deepEqual(result, args)
-        baredFn.apply(null, args);
-        test.deepEqual(result, args.splice(0, 1));
-        
+        savedFn.apply(null, args);
+        test.deepEqual(result, [null, 'a', true]);
+
         test.done();
     }
 };

@@ -1,7 +1,7 @@
 module.exports = function (grunt) {
     grunt.initConfig({
         jshint: {
-            files: ['src/fkt.js'],
+            files: ['src/**/*.js'],
             options: {
                 jshintrc: '.jshintrc'
             }
@@ -10,23 +10,28 @@ module.exports = function (grunt) {
         nodeunit: {
             all: ['test/*.test.js']
         },
-        
-        jsdoc2md: {
-            docs: {
+
+        jscs: {
+            source: {
+                src: ['src/**/*.js'],
                 options: {
-                    template: "jsdoc2md/README.hbs",
-                    index: true,
-                    "skip-heading": true
-                },
-                src: "src/fkt.js",
-                dest: "README.md"
+                    config: '.jscsrc'
+                }
+            }
+        },
+
+        markdox: {
+            'readme': {
+                src: 'src/fkt.js',
+                dest: 'README.md'
             }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-nodeunit');
-    grunt.loadNpmTasks('grunt-jsdoc-to-markdown');
+    grunt.loadNpmTasks('grunt-jscs');
+    grunt.loadNpmTasks('grunt-markdox');
 
-    grunt.registerTask('default', ['jshint', 'nodeunit', 'jsdoc2md']);
+    grunt.registerTask('default', ['jshint', 'jscs', 'nodeunit', 'markdox']);
 };
