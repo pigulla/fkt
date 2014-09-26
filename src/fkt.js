@@ -6,7 +6,7 @@
  * @license WTFPL
  */
 
-/*
+/**
  * A collection of trivial but occasionally useful functions intended for use as callbacks and in unit tests.
  *
  * Runs in both [Node.js](http://nodejs.org) and the browser. Available on
@@ -23,6 +23,22 @@
  * bower install fkt
  * ```
  * or just [download directly](https://raw.githubusercontent.com/pigulla/fkt/master/src/fkt.js) from GitHub.
+ *
+ * ## API
+ *
+ *  - [bare(fn, scope)](#barefn-scope)
+ *  - [catch(fn, scope)](#catchfn-scope)
+ *  - [constant(c)](#constantc)
+ *  - [false()](#false)
+ *  - [identity(x)](#identityx)
+ *  - [narrow(n, fn, scope)](#narrown-fn-scope)
+ *  - [negate(fn, scope)](#negatefn-scope)
+ *  - [noop()](#noop)
+ *  - [safe(fn, scope)](#safefn-scope)
+ *  - [true()](#true)
+ *  - [undefined()](#undefined)
+ *
+ * ---
  */
 
 (function (root, factory) {
@@ -106,7 +122,7 @@
      *
      * @since 0.1.2
      * @param {function} fn The function to wrap.
-     * @param {Object} scope The scope in which to execute `fn`.
+     * @param {Object=} scope The scope in which to execute `fn`.
      * @return {function} Returns the wrapped function.
      */
     fkt.bare = function (fn, scope) {
@@ -151,7 +167,7 @@
      *
      * @since 0.1.3
      * @param {function} fn The function to wrap.
-     * @param {Object} scope The scope in which to execute `fn`.
+     * @param {Object=} scope The scope in which to execute `fn`.
      * @return {function} Returns the wrapped function.
      */
     fkt.safe = function (fn, scope) {
@@ -205,7 +221,7 @@
      *
      * @since 0.1.0
      * @param {function} fn The function to negate.
-     * @param {Object} scope The scope in which to execute `fn`.
+     * @param {Object=} scope The scope in which to execute `fn`.
      * @return {function} Returns the wrapped function.
      */
     fkt.negate = function (fn, scope) {
@@ -244,7 +260,7 @@
      *
      * @since 0.1.0
      * @param {function} fn The function to wrap.
-     * @param {Object} scope The scope in which to execute `fn`.
+     * @param {Object=} scope The scope in which to execute `fn`.
      * @return {function} Returns the wrapped function.
      */
     fkt.catch = function (fn, scope) {

@@ -1,7 +1,5 @@
 
 
-<!-- Start src/fkt.js -->
-
 # fkt
 
 Author: Raphael Pigulla <pigulla@four66.com>
@@ -25,6 +23,22 @@ bower install fkt
 ```
 or just [download directly](https://raw.githubusercontent.com/pigulla/fkt/master/src/fkt.js) from GitHub.
 
+## API
+
+ - [bare(fn, scope)](#barefn-scope)
+ - [catch(fn, scope)](#catchfn-scope)
+ - [constant(c)](#constantc)
+ - [false()](#false)
+ - [identity(x)](#identityx)
+ - [narrow(n, fn, scope)](#narrown-fn-scope)
+ - [negate(fn, scope)](#negatefn-scope)
+ - [noop()](#noop)
+ - [safe(fn, scope)](#safefn-scope)
+ - [true()](#true)
+ - [undefined()](#undefined)
+
+---
+
 ## noop()
 
 A function that does nothing and returns nothing.
@@ -44,7 +58,7 @@ var callback = config.cb || fkt.noop;
 (callback || noop)(someValue);
 ```
 
-### Return:
+##### Return:
 
 * **undefined** 
 
@@ -52,11 +66,11 @@ var callback = config.cb || fkt.noop;
 
 The identity function that always returns its first argument.
 
-### Params: 
+##### Params:
 
 * **mixed** *x* 
 
-### Return:
+##### Return:
 
 * **mixed** Returns the input value `x`.
 
@@ -91,12 +105,12 @@ async.waterfall[
 });
 ```
 
-### Params: 
+##### Params:
 
 * **function** *fn* The function to wrap.
-* **Object** *scope* The scope in which to execute `fn`.
+* **Object** *scope* The scope in which to execute `fn`. *(optional)*
 
-### Return:
+##### Return:
 
 * **function** Returns the wrapped function.
 
@@ -111,13 +125,13 @@ var narrowed = fkt.narrow(2, function () {
 narrowed(1, 2, 3, 4);  // outputs [1, 2]
 ```
 
-### Params: 
+##### Params:
 
 * **number** *n* The number of parameters to keep.
 * **function** *fn* The function to wrap.
-* **Object=** *scope* The scope in which to execute `fn`.
+* **Object** *scope* The scope in which to execute `fn`. *(optional)*
 
-### Return:
+##### Return:
 
 * **function** Returns the wrapped function.
 
@@ -135,12 +149,12 @@ fs.readFile('log.txt', fkt.safe(function (err, data) {
 }));
 ```
 
-### Params: 
+##### Params:
 
 * **function** *fn* The function to wrap.
-* **Object** *scope* The scope in which to execute `fn`.
+* **Object** *scope* The scope in which to execute `fn`. *(optional)*
 
-### Return:
+##### Return:
 
 * **function** Returns the wrapped function.
 
@@ -148,7 +162,7 @@ fs.readFile('log.txt', fkt.safe(function (err, data) {
 
 A function that always returns `true`.
 
-### Return:
+##### Return:
 
 * **boolean** Always returns `true`.
 
@@ -163,7 +177,7 @@ events: {
 }
 ```
 
-### Return:
+##### Return:
 
 * **boolean** Always returns `false`.
 
@@ -183,12 +197,12 @@ var myArray = someArray.filter(function (el) {
 var myArray = someArray.filter(fkt.negate(userFunction));
 ```
 
-### Params: 
+##### Params:
 
 * **function** *fn* The function to negate.
-* **Object** *scope* The scope in which to execute `fn`.
+* **Object** *scope* The scope in which to execute `fn`. *(optional)*
 
-### Return:
+##### Return:
 
 * **function** Returns the wrapped function.
 
@@ -196,11 +210,11 @@ var myArray = someArray.filter(fkt.negate(userFunction));
 
 Creates a function that always returns the specified value.
 
-### Params: 
+##### Params:
 
 * **mixed** *c* The value you want to be returned.
 
-### Return:
+##### Return:
 
 * **function** Returns a function that always returns `c`.
 
@@ -220,12 +234,12 @@ if (result === fkt.undefined) {
 }
 ```
 
-### Params: 
+##### Params:
 
 * **function** *fn* The function to wrap.
-* **Object** *scope* The scope in which to execute `fn`.
+* **Object** *scope* The scope in which to execute `fn`. *(optional)*
 
-### Return:
+##### Return:
 
 * **function** Returns the wrapped function.
 
@@ -236,7 +250,7 @@ A function that always returns `undefined`.
 This is an alias for `fkt.noop()`. You can use whichever makes more sense semantically (i.e.,  makes your code
 more readable).
 
-### Return:
+##### Return:
 
 * **undefined** 
 

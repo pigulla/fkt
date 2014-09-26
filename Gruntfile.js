@@ -23,7 +23,10 @@ module.exports = function (grunt) {
         markdox: {
             'readme': {
                 src: 'src/fkt.js',
-                dest: 'README.md'
+                dest: 'README.md',
+                options: {
+                    template: 'markdox-template.md.ejs'
+                }
             }
         }
     });
