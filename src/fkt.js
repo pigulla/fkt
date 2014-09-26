@@ -12,11 +12,12 @@
  *
  * ### Installation
  *
- * Simply do:
+ * fkt is available for [Node.js](http://nodejs.org), [Jam](http://jamjs.org/) and [Bower](http://bower.io/)
+ * Simply do one of the following:
  * ```
- * npm install fkt    // for [Node.js](http://nodejs.org)
- * jam install fkt    // for [Jam](http://jamjs.org/)
- * bower install fkt  // for [Bower](http://bower.io/
+ * npm install fkt
+ * jam install fkt
+ * bower install fkt
  * ```
  * or just [download directly](https://raw.githubusercontent.com/pigulla/fkt/master/src/fkt.js) from GitHub
  *
