@@ -8,32 +8,21 @@
 
 /*
  * A collection of trivial but occasionally useful functions intended for use as callbacks and in unit tests.
- * Compatible with [Node.js](http://nodejs.org), [requirejs](http://requirejs.org/) and browser environments.
+ *
+ * Runs in both [Node.js](http://nodejs.org) and the browser. Available on
+ * [npm](https://www.npmjs.org/package/fkt), [Jam](https://www.npmjs.org/package/fkt) and [Bower](http://bower.io/).
+ * Implements the [UMD](https://github.com/umdjs/umd) pattern for compatibility with both native browsers environments
+ * and AMD loaders such as [requirejs](http://requirejs.org/).
  *
  * ### Installation
  *
- * fkt is available for [Node.js](http://nodejs.org), [Jam](http://jamjs.org/) and [Bower](http://bower.io/)
  * Simply do one of the following:
  * ```
  * npm install fkt
  * jam install fkt
  * bower install fkt
  * ```
- * or just [download directly](https://raw.githubusercontent.com/pigulla/fkt/master/src/fkt.js) from GitHub
- *
- * ## API
- *
- * - [bare(fn, scope)](#barefn-scope)
- * - [catch(fn, scope)](#catchfn-scope)
- * - [constant(c)](#constantc)
- * - [false()](#false)
- * - [identity(x)](#identityx)
- * - [narrow(n, fn, scope)](#narrown-fn-scope)
- * - [negate(fn, scope)](#negatefn-scope)
- * - [noop()](#noop)
- * - [safe(fn, scope)](#safefn-scope)
- * - [true()](#true)
- * - [undefined()](#undefined)
+ * or just [download directly](https://raw.githubusercontent.com/pigulla/fkt/master/src/fkt.js) from GitHub.
  */
 
 (function (root, factory) {
