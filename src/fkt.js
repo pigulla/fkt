@@ -157,6 +157,12 @@
     /**
      * The identity function that always returns its first argument.
      *
+     * Can be used to easily remove falsy values from an array:
+     * ```js
+     * [0, 1, 2, false, {}].filter(fkt.identity);
+     * // returns [1, 2, {}]
+     * ```
+     *
      * @since 0.1.0
      * @param {mixed} x
      * @return {mixed} Returns the input value `x`.
@@ -168,7 +174,7 @@
     /**
      * Wraps a callback to only be invoked with its first `n` arguments.
      *
-     * ```
+     * ```js
      * var narrowed = fkt.narrow(2, function () {
      *     console.dir(arguments);
      * });

@@ -97,5 +97,12 @@ module.exports = {
         });
 
         test.done();
+    },
+
+    'identity': function (test) {
+        var array = [0, 1, 2, null, {}, undefined, false, true, '', 'foo'];
+        test.deepEqual(array.filter(fkt.identity), array.filter(function (x) { return !!x; }));
+
+        test.done();
     }
 };
