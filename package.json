@@ -1,7 +1,7 @@
 {
   "name": "fkt",
-  "version": "0.1.3",
-  "description": "A collection of very simple but occasionally useful functions, primarily intended for use as callbacks and in tests.",
+  "version": "0.1.4",
+  "description": "A collection of very simple but occasionally useful functions, primarily intended for use with (and as) callbacks and in unit tests.",
   "main": "src/fkt.js",
   "scripts": {
     "test": "node_modules/grunt-contrib-nodeunit/node_modules/nodeunit/bin/nodeunit test"

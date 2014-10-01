@@ -4,9 +4,10 @@
 
 Author: Raphael Pigulla <pigulla@four66.com>
 
-Version: 0.1.3
+Version: 0.1.4
 
-A collection of trivial but occasionally useful functions intended for use as callbacks and in unit tests.
+A collection of very simple but occasionally useful functions, primarily intended for use with (and as) callbacks and
+in unit tests..
 
 Runs in both [Node.js](http://nodejs.org) and the browser. Available on
 [npm](https://www.npmjs.org/package/fkt), [Jam](https://www.npmjs.org/package/fkt) and [Bower](http://bower.io/).
@@ -38,41 +39,6 @@ or just [download directly](https://raw.githubusercontent.com/pigulla/fkt/master
  - [undefined()](#undefined)
 
 ---
-
-## noop()
-
-A function that does nothing and returns nothing.
-
-Can be used as a default value for callbacks. Saves you a few bytes of memory by not having to create a new
-anonymous function every time.
-
-```js
-// explicitly specify a "do nothing" function (which creates a new function every time)
-var callback = config.cb || function () {};
-// alternatively, only invoke the callback if defined (fairly verbose)
-if (callback) { callback(someValue); }
-
-// instead, do this
-var callback = config.cb || fkt.noop;
-// or if it makes you feel fuzzy even
-(callback || noop)(someValue);
-```
-
-##### Return:
-
-* **undefined** 
-
-## identity(x)
-
-The identity function that always returns its first argument.
-
-##### Params:
-
-* **mixed** *x* 
-
-##### Return:
-
-* **mixed** Returns the input value `x`.
 
 ## bare(fn, scope)
 
@@ -114,109 +80,7 @@ async.waterfall[
 
 * **function** Returns the wrapped function.
 
-## narrow(n, fn, scope)
-
-Wraps a callback to only be invoked with its first `n` arguments.
-
-```
-var narrowed = fkt.narrow(2, function () {
-    console.dir(arguments);
-});
-narrowed(1, 2, 3, 4);  // outputs [1, 2]
-```
-
-##### Params:
-
-* **number** *n* The number of parameters to keep.
-* **function** *fn* The function to wrap.
-* **Object** *scope* The scope in which to execute `fn`. *(optional)*
-
-##### Return:
-
-* **function** Returns the wrapped function.
-
-## safe(fn, scope)
-
-Wraps a callback to always be invoked without an error.
-
-Can be used to "swallow" errors if you know that it is safe to ignore them, which may be helpful when using
-libraries like async (e.g., async.map() will immediately abort when it encounters the first error which may
-not be what you want).
-
-```js
-fs.readFile('log.txt', fkt.safe(function (err, data) {
-    // err is guaranteed to be null
-}));
-```
-
-##### Params:
-
-* **function** *fn* The function to wrap.
-* **Object** *scope* The scope in which to execute `fn`. *(optional)*
-
-##### Return:
-
-* **function** Returns the wrapped function.
-
-## true()
-
-A function that always returns `true`.
-
-##### Return:
-
-* **boolean** Always returns `true`.
-
-## false()
-
-A function that always returns `false`.
-
-```js
-// useful in Backbone.Views when you need to stop event propagation:
-events: {
-    'click ul.items li': fkt.false
-}
-```
-
-##### Return:
-
-* **boolean** Always returns `false`.
-
-## negate(fn, scope)
-
-A function that wraps the given function and always returns the negated value of it.
-
-One purpose for this is using `Array.filter` with a function that happens to return `false` for values you want
-to keep (see the example).
-
-```js
-// instead of this
-var myArray = someArray.filter(function (el) {
-    return !userFunction(el);
-});
-     * // we can do
-var myArray = someArray.filter(fkt.negate(userFunction));
-```
-
-##### Params:
-
-* **function** *fn* The function to negate.
-* **Object** *scope* The scope in which to execute `fn`. *(optional)*
-
-##### Return:
-
-* **function** Returns the wrapped function.
-
-## constant(c)
-
-Creates a function that always returns the specified value.
-
-##### Params:
-
-* **mixed** *c* The value you want to be returned.
-
-##### Return:
-
-* **function** Returns a function that always returns `c`.
+---
 
 ## catch(fn, scope)
 
@@ -242,6 +106,174 @@ if (result === fkt.undefined) {
 ##### Return:
 
 * **function** Returns the wrapped function.
+
+---
+
+## constant(c)
+
+Creates a function that always returns the specified value.
+
+##### Params:
+
+* **mixed** *c* The value you want to be returned.
+
+##### Return:
+
+* **function** Returns a function that always returns `c`.
+
+---
+
+## false()
+
+A function that always returns `false`.
+
+```js
+// useful in Backbone.Views when you need to stop event propagation:
+events: {
+    'click ul.items li': fkt.false
+}
+```
+
+##### Return:
+
+* **boolean** Always returns `false`.
+
+---
+
+## identity(x)
+
+The identity function that always returns its first argument.
+
+##### Params:
+
+* **mixed** *x* 
+
+##### Return:
+
+* **mixed** Returns the input value `x`.
+
+---
+
+## narrow(n, fn, scope)
+
+Wraps a callback to only be invoked with its first `n` arguments.
+
+```
+var narrowed = fkt.narrow(2, function () {
+    console.dir(arguments);
+});
+narrowed(1, 2, 3, 4);  // outputs [1, 2]
+```
+
+##### Params:
+
+* **number** *n* The number of parameters to keep.
+* **function** *fn* The function to wrap.
+* **Object** *scope* The scope in which to execute `fn`. *(optional)*
+
+##### Return:
+
+* **function** Returns the wrapped function.
+
+---
+
+## negate(fn, scope)
+
+A function that wraps the given function and always returns the negated value of it.
+
+One purpose for this is using `Array.filter` with a function that happens to return `false` for values you want
+to keep (see the example).
+
+```js
+// instead of this
+var myArray = someArray.filter(function (el) {
+    return !userFunction(el);
+});
+// we can do
+var myArray = someArray.filter(fkt.negate(userFunction));
+```
+
+##### Params:
+
+* **function** *fn* The function to negate.
+* **Object** *scope* The scope in which to execute `fn`. *(optional)*
+
+##### Return:
+
+* **function** Returns the wrapped function.
+
+---
+
+## noop()
+
+A function that does nothing and returns nothing.
+
+Can be used as a default value for callbacks. Saves you a few bytes of memory by not having to create a new
+anonymous function every time.
+
+```js
+// explicitly specify a "do nothing" function (which creates a new function every time)
+var callback = config.cb || function () {};
+// alternatively, only invoke the callback if defined (fairly verbose)
+if (callback) { callback(someValue); }
+
+// instead, do this
+var callback = config.cb || fkt.noop;
+// or if it makes you feel fuzzy even
+(callback || fkt.noop)(someValue);
+```
+
+##### Return:
+
+* **undefined** 
+
+---
+
+## safe(fn, scope)
+
+Wraps a callback to always be invoked with `null` as its first argument (i.e., it will never fail).
+
+Can be used to "swallow" errors if you know that it is safe to ignore them, which may be helpful when using
+libraries like [async](https://www.npmjs.org/package/async) (e.g., async.map() will immediately abort when it
+encounters the first error which may not be what you want).
+
+```js
+// assuming file2 doesn't exist
+async.map(['file1', 'file2', 'file3'], fkt.safe(fs.readFile), function (error, result) {
+    // error is guaranteed to be null
+    // result is [<buffer>, undefined, <buffer>]
+}));
+```
+
+##### Params:
+
+* **function** *fn* The function to wrap.
+* **Object** *scope* The scope in which to execute `fn`. *(optional)*
+
+##### Return:
+
+* **function** Returns the wrapped function.
+
+---
+
+## true()
+
+A function that always returns `true`.
+
+```js
+function getCars(tickets, filterFn) {
+    return cars.filter(filterFn || fkt.true);
+}
+
+getCars();  // get all cars
+getCars(function (car) { return car.color === 'red'; });  // get red cars only
+```
+
+##### Return:
+
+* **boolean** Always returns `true`.
+
+---
 
 ## undefined()
 

@@ -3,6 +3,7 @@
   <? doc.javadoc.forEach(function(comment) { ?>
     <? if (!comment.ignore) { ?>
       <? if (comment.name) { ?>
+        ---
         <? if (comment.isMethod || comment.isFunction) { ?>
           ## <?= comment.name ?>(<?= comment.paramStr ?>)
         <? } else { ?>

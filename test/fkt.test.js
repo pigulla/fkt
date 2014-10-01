@@ -1,5 +1,7 @@
 'use strict';
 
+var util = require('util');
+
 var fkt = require('../src/fkt');
 
 module.exports = {
@@ -76,17 +78,23 @@ module.exports = {
     },
 
     'safe': function (test) {
-        var args = [new Error('crap'), 'a', true],
-            result,
-            fn = function () {
-                result = Array.prototype.slice.call(arguments);
-            },
-            savedFn = fkt.safe(fn);
+        var fn = fkt.safe(function (input, callback) {
+            if (input === 'failure') {
+                callback(new Error('Fail!'));
+            } else {
+                callback(null, 'yay');
+            }
+        });
 
-        fn.apply(null, args);
-        test.deepEqual(result, args)
-        savedFn.apply(null, args);
-        test.deepEqual(result, [null, 'a', true]);
+        fn('success', function (error, result) {
+            test.strictEqual(error, null);
+            test.strictEqual(result, 'yay');
+        });
+
+        fn('failure', function (error, result) {
+            test.strictEqual(error, null);
+            test.strictEqual(result, undefined);
+        });
 
         test.done();
     }
