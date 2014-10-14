@@ -1,6 +1,6 @@
 {
   "name": "fkt",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A collection of very simple but occasionally useful functions, primarily intended for use with (and as) callbacks and in unit tests.",
   "main": "src/fkt.js",
   "scripts": {

@@ -104,5 +104,19 @@ module.exports = {
         test.deepEqual(array.filter(fkt.identity), array.filter(function (x) { return !!x; }));
 
         test.done();
+    },
+
+    'callbackify': function (test) {
+        fkt.callbackify(JSON.parse)('{"a":42}', function (error, result) {
+            test.strictEqual(error, null);
+            test.deepEqual(result, { a: 42 });
+        });
+
+        fkt.callbackify(JSON.parse)('blub', function (error, result) {
+            test.ok(error instanceof SyntaxError);
+            test.same(result, undefined);
+        });
+
+        test.done();
     }
 };

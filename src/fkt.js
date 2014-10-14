@@ -1,7 +1,7 @@
 /**
  * # fkt
  *
- * @version 0.1.4
+ * @version 0.1.5
  * @author Raphael Pigulla <pigulla@four66.com>
  * @license WTFPL
  */
@@ -92,6 +92,42 @@
      */
     fkt.bare = function (fn, scope) {
         return fkt.narrow(1, fn, scope);
+    };
+
+    /**
+     * Creates a callback version of the given synchronous function.
+     *
+     * If `fn` throws an exception, the callback receives it as its first argument. Otherwise, it is invoked with the
+     * return value of `fn`.
+     *
+     * ```js
+     * async.waterfall([
+     *     function (cb) {
+     *        fs.readFile('a.json', cb);
+     *     },
+     *     fkt.callbackify(JSON.parse)
+     * ], function (error, result) {
+     *     // error is set if fs.readFile failed or JSON.parse threw an exception
+     * });
+     * ```
+     *
+     * @since 0.1.5
+     * @param {function} fn The function to wrap.
+     * @param {Object} scope The scope in which to execute `fn`.
+     * @return {function} Returns the wrapped function.
+     */
+    fkt.callbackify = function (fn, scope) {
+        return function () {
+            var cb = arguments[arguments.length - 1],
+                args = Array.prototype.slice.call(arguments, 0, arguments.length - 1);
+
+            try {
+                var result = fn.apply(scope, args);
+                cb(null, result);
+            } catch (error) {
+                cb(error);
+            }
+        };
     };
 
     /**

@@ -4,7 +4,7 @@
 
 Author: Raphael Pigulla <pigulla@four66.com>
 
-Version: 0.1.4
+Version: 0.1.5
 
 A collection of very simple but occasionally useful functions, primarily intended for use with (and as) callbacks and
 in unit tests..
@@ -27,6 +27,7 @@ or just [download directly](https://raw.githubusercontent.com/pigulla/fkt/master
 ## API
 
  - [bare(fn, scope)](#barefn-scope)
+ - [callbackify(fn, scope)](#callbackifyfn-scope)
  - [catch(fn, scope)](#catchfn-scope)
  - [constant(c)](#constantc)
  - [false()](#false)
@@ -75,6 +76,35 @@ async.waterfall[
 
 * **function** *fn* The function to wrap.
 * **Object** *scope* The scope in which to execute `fn`. *(optional)*
+
+##### Return:
+
+* **function** Returns the wrapped function.
+
+---
+
+## callbackify(fn, scope)
+
+Creates a callback version of the given synchronous function.
+
+If `fn` throws an exception, the callback receives it as its first argument. Otherwise, it is invoked with the
+return value of `fn`.
+
+```js
+async.waterfall([
+    function (cb) {
+       fs.readFile('a.json', cb);
+    },
+    fkt.callbackify(JSON.parse)
+], function (error, result) {
+    // error is set if fs.readFile failed or JSON.parse threw an exception
+});
+```
+
+##### Params:
+
+* **function** *fn* The function to wrap.
+* **Object** *scope* The scope in which to execute `fn`.
 
 ##### Return:
 
